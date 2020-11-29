@@ -15,7 +15,9 @@
   "module": "lib/main.js",
   "dependencies": {
     "@digitalbazaar/ed25519-verification-key-2020": "digitalbazaar/ed25519-verification-key-2020#initial",
+    "base58-universal": "^1.0.0",
     "esm": "^3.2.25",
+    "jsonld": "^3.2.0",
     "jsonld-signatures": "digitalbazaar/jsonld-signatures#v6.x"
   },
   "devDependencies": {
