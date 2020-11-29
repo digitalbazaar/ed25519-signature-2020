@@ -14,6 +14,5 @@ describe('Ed25519Signature2020', () => {
     it('should exist', async () => {
       Ed25519Signature2020.should.exist;
     });
-
   });
 });
