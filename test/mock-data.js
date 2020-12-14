@@ -1,12 +1,41 @@
 /*!
  * Copyright (c) 2020 Digital Bazaar, Inc. All rights reserved.
  */
+export const controller = 'https://example.edu/issuers/565049';
+
 export const mockKey = {
   type: 'Ed25519VerificationKey2020',
+  controller,
+  id: controller + '#z6MkjLrk3gKS2nnkeWcmcxiZPGskmesDpuwRBorgHxUXfxnG',
   publicKeyMultibase: 'zEYJrMxWigf9boyeJMTRN4Ern8DJMoCXaLK77pzQmxVjf',
   privateKeyMultibase: 'z4E7Q4neNHwv3pXUNzUjzc6TTYspqn9Aw6vakpRKpbVrCzwKWD4hQ' +
     'DHnxuhfrTaMjnR8BTp9NeUvJiwJoSUM6xHAZ'
 };
 
-export const seed =
-  '8c2114a150a16209c653817acc7f3e7e9c6c6290ae93d6689cbd61bb038cd31b';
+export const controllerDoc = {
+  '@context': [
+    'https://w3id.org/security/v2',
+    // 'https://w3id.org/security/v3'
+  ],
+  id: 'https://example.edu/issuers/565049',
+  // actual keys are going to be added in the test suite before() block
+  assertionMethod: [
+    mockKey.id
+  ]
+};
+
+export const credential = {
+  '@context': [
+    'https://www.w3.org/2018/credentials/v1',
+    'https://www.w3.org/2018/credentials/examples/v1',
+    'https://w3id.org/security/v3'
+  ],
+  id: 'http://example.edu/credentials/1872',
+  type: ['VerifiableCredential', 'AlumniCredential'],
+  issuer: 'https://example.edu/issuers/565049',
+  issuanceDate: '2010-01-01T19:23:24Z',
+  credentialSubject: {
+    id: 'https://example.edu/students/alice',
+    alumniOf: 'Example University'
+  }
+};
