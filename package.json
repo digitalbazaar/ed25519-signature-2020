@@ -15,6 +15,7 @@
   "module": "lib/main.js",
   "dependencies": {
     "@digitalbazaar/ed25519-verification-key-2020": "digitalbazaar/ed25519-verification-key-2020#initial",
+    "@transmute/jsonld-document-loader": "^0.2.0",
     "base58-universal": "^1.0.0",
     "esm": "^3.2.25",
     "jsonld": "^3.2.0",
@@ -51,7 +52,7 @@
     "test": "npm run lint && npm run test-node && npm run test-karma",
     "test-karma": "karma start karma.conf.js",
     "test-node": "cross-env NODE_ENV=test mocha -r esm --preserve-symlinks -t 10000 test/**/*.spec.js",
-    "lint": "eslint . --fix"
+    "lint": "eslint ."
   },
   "nyc": {
     "exclude": [
