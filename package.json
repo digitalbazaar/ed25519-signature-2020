@@ -17,16 +17,17 @@
     "@digitalbazaar/ed25519-verification-key-2020": "digitalbazaar/ed25519-verification-key-2020#initial",
     "@transmute/jsonld-document-loader": "^0.2.0",
     "base58-universal": "^1.0.0",
+    "ed25519-signature-2020-context": "digitalbazaar/ed25519-signature-2020-context#initial",
     "esm": "^3.2.25",
-    "jsonld": "^3.2.0",
-    "jsonld-signatures": "digitalbazaar/jsonld-signatures#v6.x"
+    "jsonld": "^4.0.1",
+    "jsonld-signatures": "digitalbazaar/jsonld-signatures#v8.x"
   },
   "devDependencies": {
     "chai": "^4.2.0",
     "cross-env": "^7.0.2",
-    "eslint": "^7.14.0",
+    "eslint": "^7.20.0",
     "eslint-config-digitalbazaar": "^2.6.1",
-    "eslint-plugin-jsdoc": "^30.7.8",
+    "eslint-plugin-jsdoc": "^32.2.0",
     "karma": "^4.0.1",
     "karma-babel-preprocessor": "^8.0.0",
     "karma-chai": "^0.1.0",
