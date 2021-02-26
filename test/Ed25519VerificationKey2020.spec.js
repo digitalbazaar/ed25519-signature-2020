@@ -48,8 +48,11 @@ describe('Ed25519Signature2020', () => {
   describe('sign()', () => {
     it('should sign a document', async () => {
       const key = await Ed25519VerificationKey2020.from({...mockKey});
+      const suite = new Ed25519Signature2020({key});
+      suite.date = '2010-01-01T19:23:24Z';
+
       const signed = await jsigs.sign(credential, {
-        suite: new Ed25519Signature2020({key}),
+        suite,
         purpose: new AssertionProofPurpose(),
         documentLoader
       });
@@ -59,9 +62,12 @@ describe('Ed25519Signature2020', () => {
       expect(signed).to.have.property('proof');
       expect(signed.proof.proofValue).to
         // eslint-disable-next-line max-len
-        .equal('z5jdt64Lg9q7SqiCpnNDgNmGmwHrTYj6jTGS7xVQuYpBFfjNUtrVMfa3UobwWKRS7UVJcSivxB4T4Sr9QmmHpxy84');
+        .equal('zfMw453FJfB7c6Cx4Lo9dho8ePVnZrSwLeFAhUFPZXaS3pe1nS7v3PXFNkxvK515eNweAEiCbtceWGYQyLjtD2uB');
     });
   });
 
-  describe('verify()', () => {});
+  describe('verify()', () => {
+    it('should verify a document', async () => {
+    });
+  });
 });
