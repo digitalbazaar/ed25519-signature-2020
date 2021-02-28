@@ -24,12 +24,6 @@ describe('Ed25519Signature2020', () => {
   let documentLoader;
 
   before(async () => {
-    const keyPair = await Ed25519VerificationKey2020.from({...mockKey});
-    const publicKey = await keyPair.export({publicKey: true});
-    controllerDoc.publicKey.push(publicKey);
-
-    console.log(controllerDoc);
-
     documentLoader = documentLoaderFactory.pluginFactory
       .build({
         contexts: {
@@ -68,7 +62,7 @@ describe('Ed25519Signature2020', () => {
       expect(signedCredential).to.have.property('proof');
       expect(signedCredential.proof.proofValue).to
         // eslint-disable-next-line max-len
-        .equal('zfMw453FJfB7c6Cx4Lo9dho8ePVnZrSwLeFAhUFPZXaS3pe1nS7v3PXFNkxvK515eNweAEiCbtceWGYQyLjtD2uB');
+        .equal('z3vG9cHevmrtMiTfb8e7qSPtKyZz1ziPbcxePqcYJ5Rtx5asWsHFq6rPfj8GaPxXkYqvb7qu2dFYg9amc1dpqQhsY');
     });
   });
 
@@ -97,10 +91,11 @@ describe('Ed25519Signature2020', () => {
       const result = await jsigs.verify(signedCredential, {
         suite,
         purpose: new AssertionProofPurpose(),
+        compactProof: false,
         documentLoader
       });
 
-      console.log(result);
+      expect(result.verified).to.be.true;
     });
   });
 });
