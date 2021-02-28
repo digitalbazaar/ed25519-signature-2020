@@ -1,5 +1,5 @@
 /*!
- * Copyright (c) 2020-2021 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2021 Digital Bazaar, Inc. All rights reserved.
  */
 export const controller = 'https://example.edu/issuers/565049';
 
@@ -14,12 +14,10 @@ export const mockKey = {
 
 export const controllerDoc = {
   '@context': [
-    'https://w3id.org/security/ed25519-signature-2020/v1'
+    'https://w3id.org/security/v2'
   ],
   id: 'https://example.edu/issuers/565049',
-  assertionMethod: [mockKey.id],
-  // actual keys are going to be added in the test suite before() block
-  publicKey: []
+  assertionMethod: [mockKey.id]
 };
 
 export const credential = {
