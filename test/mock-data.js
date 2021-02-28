@@ -17,10 +17,9 @@ export const controllerDoc = {
     'https://w3id.org/security/ed25519-signature-2020/v1'
   ],
   id: 'https://example.edu/issuers/565049',
+  assertionMethod: [mockKey.id],
   // actual keys are going to be added in the test suite before() block
-  assertionMethod: [
-    mockKey.id
-  ]
+  publicKey: []
 };
 
 export const credential = {
