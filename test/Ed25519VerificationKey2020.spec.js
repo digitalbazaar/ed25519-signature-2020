@@ -57,8 +57,6 @@ describe('Ed25519Signature2020', () => {
         documentLoader
       });
 
-      console.log('Signed document:', signedCredential);
-
       expect(signedCredential).to.have.property('proof');
       expect(signedCredential.proof.proofValue).to
         // eslint-disable-next-line max-len
@@ -85,8 +83,6 @@ describe('Ed25519Signature2020', () => {
     it('should verify a document', async () => {
       const keyPair = await Ed25519VerificationKey2020.from({...mockKey});
       const suite = new Ed25519Signature2020({key: keyPair});
-
-      console.log('verifying:', signedCredential);
 
       const result = await jsigs.verify(signedCredential, {
         suite,

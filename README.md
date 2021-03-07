@@ -34,7 +34,35 @@ npm install
 
 ## Usage
 
-TBD
+Example signed VC:
+
+```json
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://www.w3.org/2018/credentials/examples/v1",
+    "https://w3id.org/security/ed25519-signature-2020/v1"
+  ],
+  "id": "http://example.edu/credentials/1872",
+  "type": [
+    "VerifiableCredential",
+    "AlumniCredential"
+  ],
+  "issuer": "https://example.edu/issuers/565049",
+  "issuanceDate": "2010-01-01T19:23:24Z",
+  "credentialSubject": {
+    "id": "https://example.edu/students/alice",
+    "alumniOf": "Example University"
+  },
+  "proof": {
+    "type": "Ed25519Signature2020",
+    "created": "2010-01-01T19:23:24Z",
+    "proofPurpose": "assertionMethod",
+    "proofValue": "z3vG9cHevmrtMiTfb8e7qSPtKyZz1ziPbcxePqcYJ5Rtx5asWsHFq6rPfj8GaPxXkYqvb7qu2dFYg9amc1dpqQhsY",
+    "verificationMethod": "https://example.edu/issuers/565049#z6MkjLrk3gKS2nnkeWcmcxiZPGskmesDpuwRBorgHxUXfxnG"
+  }
+}
+```
 
 ## Contribute
 
