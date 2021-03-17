@@ -27,8 +27,8 @@ describe('Ed25519Signature2020', () => {
       .build({
         contexts: {
           ...contexts.W3C_Verifiable_Credentials,
-          'https://w3id.org/security/ed25519-signature-2020/v1': ed25519
-            .contexts.get('https://w3id.org/security/ed25519-signature-2020/v1')
+          'https://w3id.org/security/suites/ed25519-2020/v1': ed25519
+            .contexts.get('https://w3id.org/security/suites/ed25519-2020/v1')
         }
       })
       .addContext({
