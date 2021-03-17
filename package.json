@@ -14,7 +14,7 @@
   ],
   "module": "lib/main.js",
   "dependencies": {
-    "@digitalbazaar/ed25519-verification-key-2020": "^1.0.0",
+    "@digitalbazaar/ed25519-verification-key-2020": "^2.0.0",
     "base58-universal": "^1.0.0",
     "esm": "^3.2.25",
     "jsonld": "^4.0.1",
@@ -24,7 +24,7 @@
     "@transmute/jsonld-document-loader": "^0.2.0",
     "chai": "^4.2.0",
     "cross-env": "^7.0.3",
-    "ed25519-signature-2020-context": "digitalbazaar/ed25519-signature-2020-context#initial",
+    "ed25519-signature-2020-context": "digitalbazaar/ed25519-signature-2020-context#v1.0.0",
     "eslint": "^7.20.0",
     "eslint-config-digitalbazaar": "^2.6.1",
     "eslint-plugin-jsdoc": "^32.2.0",
