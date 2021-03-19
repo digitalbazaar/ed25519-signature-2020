@@ -3,7 +3,15 @@
  */
 export const controller = 'https://example.edu/issuers/565049';
 
-export const mockKey = {
+export const mockPublicKey = {
+  '@context': 'https://w3id.org/security/suites/ed25519-2020/v1',
+  type: 'Ed25519VerificationKey2020',
+  controller,
+  id: controller + '#z6MkjLrk3gKS2nnkeWcmcxiZPGskmesDpuwRBorgHxUXfxnG',
+  publicKeyMultibase: 'zEYJrMxWigf9boyeJMTRN4Ern8DJMoCXaLK77pzQmxVjf'
+};
+
+export const mockKeyPair = {
   type: 'Ed25519VerificationKey2020',
   controller,
   id: controller + '#z6MkjLrk3gKS2nnkeWcmcxiZPGskmesDpuwRBorgHxUXfxnG',
@@ -14,10 +22,10 @@ export const mockKey = {
 
 export const controllerDoc = {
   '@context': [
-    'https://w3id.org/security/v2'
+    'https://w3id.org/security/suites/ed25519-2020/v1'
   ],
   id: 'https://example.edu/issuers/565049',
-  assertionMethod: [mockKey.id]
+  assertionMethod: [mockPublicKey]
 };
 
 export const credential = {
