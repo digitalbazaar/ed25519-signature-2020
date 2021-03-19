@@ -17,7 +17,7 @@
     "@digitalbazaar/ed25519-verification-key-2020": "^2.0.0",
     "base58-universal": "^1.0.0",
     "esm": "^3.2.25",
-    "jsonld": "^4.0.1",
+    "jsonld": "^5.0.0",
     "jsonld-signatures": "digitalbazaar/jsonld-signatures#v8.x"
   },
   "devDependencies": {
