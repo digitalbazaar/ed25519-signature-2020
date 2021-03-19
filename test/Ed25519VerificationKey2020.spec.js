@@ -15,6 +15,8 @@ import {
   credential, mockKeyPair, mockPublicKey, controllerDoc
 } from './mock-data.js';
 
+import didContext from 'did-context';
+
 import {
   documentLoaderFactory,
   contexts,
@@ -36,7 +38,9 @@ describe('Ed25519Signature2020', () => {
       })
       .addContext({
         [mockKeyPair.controller]: controllerDoc,
-        [mockPublicKey.id]: mockPublicKey
+        [mockPublicKey.id]: mockPublicKey,
+        [didContext.constants.DID_CONTEXT_URL]: didContext
+          .contexts.get('https://w3id.org/did/v0.11')
       })
       .buildDocumentLoader();
   });
@@ -101,18 +105,14 @@ describe('Ed25519Signature2020', () => {
       });
     });
 
-    it.only('should verify a document', async () => {
+    it('should verify a document', async () => {
       const suite = new Ed25519Signature2020();
-
-      console.log(signedCredential)
 
       const result = await jsigs.verify(signedCredential, {
         suite,
         purpose: new AssertionProofPurpose(),
         documentLoader
       });
-
-      console.log(result)
 
       expect(result.verified).to.be.true;
     });
