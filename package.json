@@ -50,6 +50,8 @@
     "node": ">=14"
   },
   "scripts": {
+    "ts:defs": "npx tsc --declaration --outDir dist --emitDeclarationOnly",
+    "prepare": "npm run ts:defs",
     "test": "npm run lint && npm run test-node && npm run test-karma",
     "test-karma": "karma start karma.conf.js",
     "test-node": "cross-env NODE_ENV=test mocha -r esm --preserve-symlinks -t 30000 -A -R ${REPORTER:-spec} test/*.spec.js",
