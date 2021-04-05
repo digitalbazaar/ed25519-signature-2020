@@ -22,7 +22,7 @@ export const mockKeyPair = {
 
 export const controllerDoc = {
   '@context': [
-    'https://w3id.org/did/v0.11',
+    'https://www.w3.org/ns/did/v1',
     'https://w3id.org/security/suites/ed25519-2020/v1'
   ],
   id: 'https://example.edu/issuers/565049',

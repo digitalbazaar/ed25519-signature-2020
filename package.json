@@ -24,7 +24,7 @@
     "@transmute/jsonld-document-loader": "^0.2.0",
     "chai": "^4.2.0",
     "cross-env": "^7.0.3",
-    "did-context": "^2.0.0",
+    "did-context": "^3.0.0",
     "ed25519-signature-2020-context": "^1.0.0",
     "eslint": "^7.20.0",
     "eslint-config-digitalbazaar": "^2.6.1",
