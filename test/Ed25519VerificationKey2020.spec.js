@@ -40,7 +40,7 @@ describe('Ed25519Signature2020', () => {
         [mockKeyPair.controller]: controllerDoc,
         [mockPublicKey.id]: mockPublicKey,
         [didContext.constants.DID_CONTEXT_URL]: didContext
-          .contexts.get('https://w3id.org/did/v0.11')
+          .contexts.get('https://www.w3.org/ns/did/v1')
       })
       .buildDocumentLoader();
   });
