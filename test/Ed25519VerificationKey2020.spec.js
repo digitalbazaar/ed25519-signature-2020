@@ -91,9 +91,9 @@ describe('Ed25519Signature2020', () => {
     it('should throw error if "signer" is not specified', async () => {
       const unsignedCredential = {...credential};
       let signedCredential;
+      const suite = new Ed25519Signature2020();
       let err;
       try {
-        const suite = new Ed25519Signature2020();
         signedCredential = await jsigs.sign(unsignedCredential, {
           suite,
           purpose: new AssertionProofPurpose(),
@@ -104,8 +104,7 @@ describe('Ed25519Signature2020', () => {
       }
       expect(signedCredential).to.equal(undefined);
       expect(err.name).to.equal('Error');
-      expect(err.message).to
-        .equal('A signer API has not been specified.');
+      expect(err.message).to.equal('A signer API has not been specified.');
     });
   });
 
