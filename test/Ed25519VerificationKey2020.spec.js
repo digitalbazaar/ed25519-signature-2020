@@ -69,6 +69,25 @@ describe('Ed25519Signature2020', () => {
         .equal('zfMw453FJfB7c6Cx4Lo9dho8ePVnZrSwLeFAhUFPZXaS3pe1' +
           'nS7v3PXFNkxvK515eNweAEiCbtceWGYQyLjtD2uB');
     });
+    it('signs a document given a signer and verificationMethod', async () => {
+      const unsignedCredential = {...credential};
+      const keyPair = await Ed25519VerificationKey2020.from({...mockKeyPair});
+      const signer = keyPair.signer();
+      const verificationMethod = keyPair.id;
+      const suite = new Ed25519Signature2020({signer, verificationMethod});
+      suite.date = '2010-01-01T19:23:24Z';
+
+      const signedCredential = await jsigs.sign(unsignedCredential, {
+        suite,
+        purpose: new AssertionProofPurpose(),
+        documentLoader
+      });
+
+      expect(signedCredential).to.have.property('proof');
+      expect(signedCredential.proof.proofValue).to
+        .equal('zfMw453FJfB7c6Cx4Lo9dho8ePVnZrSwLeFAhUFPZXaS3pe1' +
+          'nS7v3PXFNkxvK515eNweAEiCbtceWGYQyLjtD2uB');
+    });
     it('should throw error if "signer" is not specified', async () => {
       const unsignedCredential = {...credential};
       const suite = new Ed25519Signature2020();
