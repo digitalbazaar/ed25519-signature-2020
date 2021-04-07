@@ -18,7 +18,7 @@
     "base58-universal": "^1.0.0",
     "esm": "^3.2.25",
     "jsonld": "^5.0.0",
-    "jsonld-signatures": "digitalbazaar/jsonld-signatures#set-ver-method"
+    "jsonld-signatures": "^9.0.0"
   },
   "devDependencies": {
     "@transmute/jsonld-document-loader": "^0.2.0",
