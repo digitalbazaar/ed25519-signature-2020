@@ -18,7 +18,7 @@
 
 ## Background
 
-For use with https://github.com/digitalbazaar/jsonld-signatures v8.0 and above.
+For use with https://github.com/digitalbazaar/jsonld-signatures v9.0 and above.
 
 ## Security
 
