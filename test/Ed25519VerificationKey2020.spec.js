@@ -52,7 +52,7 @@ describe('Ed25519Signature2020', () => {
   });
 
   describe('sign() and verify()', () => {
-    it('should sign a document', async () => {
+    it('should sign a document with a key pair', async () => {
       const unsignedCredential = {...credential};
       const keyPair = await Ed25519VerificationKey2020.from({...mockKeyPair});
       const suite = new Ed25519Signature2020({key: keyPair});
@@ -69,11 +69,15 @@ describe('Ed25519Signature2020', () => {
         .equal('zfMw453FJfB7c6Cx4Lo9dho8ePVnZrSwLeFAhUFPZXaS3pe1' +
           'nS7v3PXFNkxvK515eNweAEiCbtceWGYQyLjtD2uB');
     });
+
     it('signs a document given a signer object', async () => {
       const unsignedCredential = {...credential};
       const keyPair = await Ed25519VerificationKey2020.from({...mockKeyPair});
+
+      // Note: Typically a signer object comes from a KMS; mocking it here
       const signer = keyPair.signer();
       signer.id = keyPair.id;
+
       const suite = new Ed25519Signature2020({signer});
       suite.date = '2010-01-01T19:23:24Z';
 
@@ -88,9 +92,11 @@ describe('Ed25519Signature2020', () => {
         .equal('zfMw453FJfB7c6Cx4Lo9dho8ePVnZrSwLeFAhUFPZXaS3pe1' +
           'nS7v3PXFNkxvK515eNweAEiCbtceWGYQyLjtD2uB');
     });
+
     it('should throw error if "signer" is not specified', async () => {
       const unsignedCredential = {...credential};
       let signedCredential;
+      // No key, no signer object given
       const suite = new Ed25519Signature2020();
       let err;
       try {
@@ -135,6 +141,7 @@ describe('Ed25519Signature2020', () => {
 
       expect(result.verified).to.be.true;
     });
+
     it('should fail verification if "proofValue" is not string',
       async () => {
         const suite = new Ed25519Signature2020();
@@ -156,6 +163,7 @@ describe('Ed25519Signature2020', () => {
           'The proof does not include a valid "proofValue" property.'
         );
       });
+
     it('should fail verification if "proofValue" is not given',
       async () => {
         const suite = new Ed25519Signature2020();
@@ -178,6 +186,7 @@ describe('Ed25519Signature2020', () => {
           'The proof does not include a valid "proofValue" property.'
         );
       });
+
     it('should fail verification if proofValue string does not start with "z"',
       async () => {
         const suite = new Ed25519Signature2020();
@@ -200,6 +209,7 @@ describe('Ed25519Signature2020', () => {
           'Only base58btc multibase encoding is supported.'
         );
       });
+
     it('should fail verification if proof type is not Ed25519Signature2020',
       async () => {
         const suite = new Ed25519Signature2020();
