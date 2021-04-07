@@ -1,16 +1,14 @@
 /*!
  * Copyright (c) 2021 Digital Bazaar, Inc. All rights reserved.
  */
-import chai from 'chai';
-chai.should();
-const {expect} = chai;
+import {expect} from 'chai';
 
 import jsigs from 'jsonld-signatures';
 const {purposes: {AssertionProofPurpose}} = jsigs;
 
 import {Ed25519VerificationKey2020} from
   '@digitalbazaar/ed25519-verification-key-2020';
-import {Ed25519Signature2020} from '../';
+import {Ed25519Signature2020, suiteContext} from '..';
 import {
   credential, mockKeyPair, mockPublicKey, controllerDoc
 } from './mock-data.js';
@@ -45,9 +43,16 @@ describe('Ed25519Signature2020', () => {
       .buildDocumentLoader();
   });
 
-  describe('constructor', () => {
-    it('should exist', async () => {
-      Ed25519Signature2020.should.exist;
+  describe('exports', () => {
+    it('it should have proper exports', async () => {
+      should.exist(Ed25519Signature2020);
+      should.exist(suiteContext);
+      suiteContext.should.have.keys([
+        'appContextMap',
+        'constants',
+        'contexts',
+        'documentLoader',
+      ]);
     });
   });
 
