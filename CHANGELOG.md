@@ -1,6 +1,6 @@
 # @digitalbazaar/ed25519-signature-2020 Changelog
 
-## 2.0.0 -
+## 2.0.0 - 2021-04-06
 
 ### Changed
 - **BREAKING**: Update to use `jsonld-signatures` v9.0 (removes 
