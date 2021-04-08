@@ -53,7 +53,7 @@ describe('Ed25519Signature2020', () => {
         'contexts',
         'documentLoader',
       ]);
-      Ed25519Signature2020.CONTEXT_URL.should.exist;
+      should.exist(Ed25519Signature2020.CONTEXT_URL);
       Ed25519Signature2020.CONTEXT_URL.should
         .equal(suiteContext.constants.CONTEXT_URL);
       const context = Ed25519Signature2020.CONTEXT;
