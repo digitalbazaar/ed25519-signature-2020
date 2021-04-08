@@ -53,6 +53,12 @@ describe('Ed25519Signature2020', () => {
         'contexts',
         'documentLoader',
       ]);
+      Ed25519Signature2020.CONTEXT_URL.should.exist;
+      Ed25519Signature2020.CONTEXT_URL.should
+        .equal(suiteContext.constants.CONTEXT_URL);
+      const context = Ed25519Signature2020.CONTEXT;
+      context.should.exist;
+      context['@context'].id.should.equal('@id');
     });
   });
 
