@@ -122,6 +122,57 @@ describe('Ed25519Signature2020', () => {
       expect(err.name).to.equal('Error');
       expect(err.message).to.equal('A signer API has not been specified.');
     });
+
+    it('should add the suite context by default', async () => {
+      const unsignedCredential = {...credential};
+      unsignedCredential['@context'] = [
+        'https://www.w3.org/2018/credentials/v1',
+        'https://www.w3.org/2018/credentials/examples/v1'
+        // do not include the suite-specific context
+      ];
+
+      const keyPair = await Ed25519VerificationKey2020.from({...mockKeyPair});
+      const suite = new Ed25519Signature2020({key: keyPair});
+
+      const signedCredential = await jsigs.sign(unsignedCredential, {
+        suite,
+        purpose: new AssertionProofPurpose(),
+        documentLoader
+      });
+
+      expect(signedCredential['@context']).to.eql([
+        'https://www.w3.org/2018/credentials/v1',
+        'https://www.w3.org/2018/credentials/examples/v1',
+        'https://w3id.org/security/suites/ed25519-2020/v1'
+      ]);
+    });
+
+    it('should error if no context and addSuiteContext false', async () => {
+      const unsignedCredential = {...credential};
+      unsignedCredential['@context'] = [
+        'https://www.w3.org/2018/credentials/v1',
+        'https://www.w3.org/2018/credentials/examples/v1'
+        // do not include the suite-specific context
+      ];
+
+      const keyPair = await Ed25519VerificationKey2020.from({...mockKeyPair});
+      const suite = new Ed25519Signature2020({key: keyPair});
+
+      let err;
+      try {
+        await jsigs.sign(unsignedCredential, {
+          suite,
+          purpose: new AssertionProofPurpose(),
+          documentLoader,
+          addSuiteContext: false
+        });
+      } catch(e) {
+        err = e;
+      }
+      expect(err.name).to.equal('TypeError');
+      expect(err.message).to
+        .match(/The document to be signed must contain this suite's @context/);
+    });
   });
 
   describe('verify()', () => {
