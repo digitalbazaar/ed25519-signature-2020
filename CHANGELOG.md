@@ -1,6 +1,6 @@
 # @digitalbazaar/ed25519-signature-2020 Changelog
 
-## 2.0.1 - 2021-04-TBD
+## 2.0.1 - 2021-04-09
 
 ### Changed
 - Use `ed25519-verification-key-2020@2.1.1`. Signer now has an "id" property.
