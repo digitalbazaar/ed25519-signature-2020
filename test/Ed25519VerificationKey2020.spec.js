@@ -76,7 +76,6 @@ describe('Ed25519Signature2020', () => {
 
       // Note: Typically a signer object comes from a KMS; mocking it here
       const signer = keyPair.signer();
-      signer.id = keyPair.id;
 
       const suite = new Ed25519Signature2020({signer});
       suite.date = '2010-01-01T19:23:24Z';
