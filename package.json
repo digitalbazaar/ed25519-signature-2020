@@ -22,7 +22,8 @@
     ".": {
       "require": "./dist/index.js",
       "import": "./dist/esm/index.js"
-    }
+    },
+    "./package.json": "./package.json"
   },
   "dependencies": {
     "@digitalbazaar/ed25519-verification-key-2020": "digitalbazaar/ed25519-verification-key-2020#noesm",
