@@ -29,8 +29,8 @@
     "@digitalbazaar/ed25519-verification-key-2020": "digitalbazaar/ed25519-verification-key-2020#noesm",
     "base58-universal": "digitalbazaar/base58-universal#noesm",
     "ed25519-signature-2020-context": "^1.0.1",
-    "jsonld": "^5.2.0",
-    "jsonld-signatures": "^9.0.1"
+    "jsonld": "digitalbazaar/jsonld.js#v5.2.1-rc1",
+    "jsonld-signatures": "digitalbazaar/jsonld-signatures##v9.0.3-rc1"
   },
   "devDependencies": {
     "@transmute/jsonld-document-loader": "^0.2.0",
