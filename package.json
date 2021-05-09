@@ -30,7 +30,7 @@
     "base58-universal": "digitalbazaar/base58-universal#noesm",
     "ed25519-signature-2020-context": "^1.0.1",
     "jsonld": "digitalbazaar/jsonld.js#v5.2.1-rc2",
-    "jsonld-signatures": "digitalbazaar/jsonld-signatures#v9.0.3-rc2"
+    "jsonld-signatures": "digitalbazaar/jsonld-signatures#v9.0.3-rc3"
   },
   "devDependencies": {
     "@transmute/jsonld-document-loader": "^0.2.0",
