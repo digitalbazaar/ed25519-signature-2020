@@ -9,39 +9,10 @@ const {purposes: {AssertionProofPurpose}} = jsigs;
 import {Ed25519VerificationKey2020} from
   '@digitalbazaar/ed25519-verification-key-2020';
 import {Ed25519Signature2020, suiteContext} from '..';
-import {
-  credential, mockKeyPair, mockPublicKey, controllerDoc
-} from './mock-data.js';
-
-import didContext from 'did-context';
-
-import {
-  documentLoaderFactory,
-  contexts,
-} from '@transmute/jsonld-document-loader';
-
-import * as ed25519 from 'ed25519-signature-2020-context';
+import {credential, mockKeyPair} from './mock-data.js';
+import {documentLoader} from 'bedrock-jsonld-document-loader';
 
 describe('Ed25519Signature2020', () => {
-  let documentLoader;
-
-  before(async () => {
-    documentLoader = documentLoaderFactory.pluginFactory
-      .build({
-        contexts: {
-          ...contexts.W3C_Verifiable_Credentials,
-          'https://w3id.org/security/suites/ed25519-2020/v1': ed25519
-            .contexts.get('https://w3id.org/security/suites/ed25519-2020/v1')
-        }
-      })
-      .addContext({
-        [mockKeyPair.controller]: controllerDoc,
-        [mockPublicKey.id]: mockPublicKey,
-        [didContext.constants.DID_CONTEXT_URL]: didContext
-          .contexts.get('https://www.w3.org/ns/did/v1')
-      })
-      .buildDocumentLoader();
-  });
 
   describe('exports', () => {
     it('it should have proper exports', async () => {
@@ -52,6 +23,8 @@ describe('Ed25519Signature2020', () => {
         'constants',
         'contexts',
         'documentLoader',
+        'CONTEXT',
+        'CONTEXT_URL'
       ]);
       should.exist(Ed25519Signature2020.CONTEXT_URL);
       Ed25519Signature2020.CONTEXT_URL.should
@@ -74,11 +47,10 @@ describe('Ed25519Signature2020', () => {
         purpose: new AssertionProofPurpose(),
         documentLoader
       });
-
       expect(signedCredential).to.have.property('proof');
       expect(signedCredential.proof.proofValue).to
-        .equal('zfMw453FJfB7c6Cx4Lo9dho8ePVnZrSwLeFAhUFPZXaS3pe1' +
-          'nS7v3PXFNkxvK515eNweAEiCbtceWGYQyLjtD2uB');
+        .equal('z4BGReZ26TUL7wPwsWKtAs2MZZknq9nzrAJ5uuPmfA14WXjn6w5cqg' +
+          '8Z5rWJjJZ2qG16iz4KcNKW9RJdN4Ea1PRuA');
     });
 
     it('signs a document given a signer object', async () => {
@@ -99,8 +71,8 @@ describe('Ed25519Signature2020', () => {
 
       expect(signedCredential).to.have.property('proof');
       expect(signedCredential.proof.proofValue).to
-        .equal('zfMw453FJfB7c6Cx4Lo9dho8ePVnZrSwLeFAhUFPZXaS3pe1' +
-          'nS7v3PXFNkxvK515eNweAEiCbtceWGYQyLjtD2uB');
+        .equal('z4BGReZ26TUL7wPwsWKtAs2MZZknq9nzrAJ5uuPmfA14WXjn6w5cqg8Z5' +
+          'rWJjJZ2qG16iz4KcNKW9RJdN4Ea1PRuA');
     });
 
     it('should throw error if "signer" is not specified', async () => {
@@ -127,7 +99,10 @@ describe('Ed25519Signature2020', () => {
       const unsignedCredential = {...credential};
       unsignedCredential['@context'] = [
         'https://www.w3.org/2018/credentials/v1',
-        'https://www.w3.org/2018/credentials/examples/v1'
+        {
+          AlumniCredential: 'https://schema.org#AlumniCredential',
+          alumniOf: 'https://schema.org#alumniOf'
+        }
         // do not include the suite-specific context
       ];
 
@@ -142,7 +117,10 @@ describe('Ed25519Signature2020', () => {
 
       expect(signedCredential['@context']).to.eql([
         'https://www.w3.org/2018/credentials/v1',
-        'https://www.w3.org/2018/credentials/examples/v1',
+        {
+          AlumniCredential: 'https://schema.org#AlumniCredential',
+          alumniOf: 'https://schema.org#alumniOf'
+        },
         'https://w3id.org/security/suites/ed25519-2020/v1'
       ]);
     });
