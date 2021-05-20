@@ -22,7 +22,13 @@
     "jsonld-signatures": "^9.0.1"
   },
   "devDependencies": {
-    "@transmute/jsonld-document-loader": "^0.2.0",
+    "@digitalbazaar/did-io": "^1.0.0",
+    "@digitalbazaar/did-method-key": "^1.1.0",
+    "bedrock": "^4.1.1",
+    "bedrock-credentials-context": "^1.0.0",
+    "bedrock-did-context": "^2.0.0",
+    "bedrock-jsonld-document-loader": "^1.0.1",
+    "bedrock-security-context": "^4.1.0",
     "chai": "^4.2.0",
     "cross-env": "^7.0.3",
     "did-context": "^3.0.0",

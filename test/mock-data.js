@@ -32,7 +32,10 @@ export const controllerDoc = {
 export const credential = {
   '@context': [
     'https://www.w3.org/2018/credentials/v1',
-    'https://www.w3.org/2018/credentials/examples/v1',
+    {
+      AlumniCredential: 'https://schema.org#AlumniCredential',
+      alumniOf: 'https://schema.org#alumniOf'
+    },
     'https://w3id.org/security/suites/ed25519-2020/v1'
   ],
   id: 'http://example.edu/credentials/1872',
