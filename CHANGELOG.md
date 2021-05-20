@@ -3,7 +3,7 @@
 ## 2.2.0 - 2021-05-TBD
 
 ### Changed
-- Replace `@transmute/jsonld-document-loader` with `bedrock-jsonld-document-loader` in test.
+- Replace `@transmute/jsonld-document-loader` with `jsonld-document-loader` in test.
 
 ## 2.1.0 - 2021-04-09
 
