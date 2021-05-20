@@ -10,10 +10,11 @@ import {Ed25519VerificationKey2020} from
   '@digitalbazaar/ed25519-verification-key-2020';
 import {Ed25519Signature2020, suiteContext} from '..';
 import {credential, mockKeyPair} from './mock-data.js';
-import {documentLoader} from 'bedrock-jsonld-document-loader';
+import {loader} from './documentLoader';
+
+const documentLoader = loader.build();
 
 describe('Ed25519Signature2020', () => {
-
   describe('exports', () => {
     it('it should have proper exports', async () => {
       should.exist(Ed25519Signature2020);
