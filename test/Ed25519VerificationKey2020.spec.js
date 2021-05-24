@@ -340,7 +340,7 @@ describe('Ed25519Signature2020', () => {
       expect(result.results[0].error.name).equal('TypeError');
       expect(result.results[0].error.message).equal(
         'The verification method (key) must contain ' +
-        '\"https://w3id.org/security/suites/ed25519-2018/v1\".');
+        '\"https://w3id.org/security/suites/ed25519-2018/v1\" context.');
     });
     it('should throw error when verification method contains 2018 key' +
       'but 2020 context', async () => {
@@ -362,7 +362,7 @@ describe('Ed25519Signature2020', () => {
       expect(result.results[0].error.name).equal('TypeError');
       expect(result.results[0].error.message).equal(
         'The verification method (key) must contain ' +
-        '\"https://w3id.org/security/suites/ed25519-2018/v1\".');
+        '\"https://w3id.org/security/suites/ed25519-2018/v1\" context.');
     });
   });
 });
