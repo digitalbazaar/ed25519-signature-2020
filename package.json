@@ -17,6 +17,7 @@
     "@digitalbazaar/ed25519-verification-key-2020": "^2.1.1",
     "base58-universal": "^1.0.0",
     "ed25519-signature-2020-context": "^1.0.1",
+    "ed25519-signature-2018-context": "^1.1.0",
     "esm": "^3.2.25",
     "jsonld": "^5.2.0",
     "jsonld-signatures": "^9.0.1"
@@ -24,6 +25,7 @@
   "devDependencies": {
     "@digitalbazaar/did-io": "^1.0.0",
     "@digitalbazaar/did-method-key": "^1.1.0",
+    "@digitalbazaar/ed25519-verification-key-2018": "^3.1.1",
     "chai": "^4.2.0",
     "credentials-context": "^1.0.0",
     "cross-env": "^7.0.3",

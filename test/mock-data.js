@@ -3,7 +3,7 @@
  */
 export const controller = 'https://example.edu/issuers/565049';
 
-export const mockPublicKey = {
+export const mockPublicKey2020 = {
   '@context': 'https://w3id.org/security/suites/ed25519-2020/v1',
   type: 'Ed25519VerificationKey2020',
   controller,
@@ -11,7 +11,15 @@ export const mockPublicKey = {
   publicKeyMultibase: 'zEYJrMxWigf9boyeJMTRN4Ern8DJMoCXaLK77pzQmxVjf'
 };
 
-export const mockKeyPair = {
+export const mockPublicKey2018 = {
+  '@context': 'https://w3id.org/security/suites/ed25519-2018/v1',
+  type: 'Ed25519VerificationKey2018',
+  controller,
+  id: controller + '#z6MkumafR1duPR5FZgbVu8nzX3VyhULoXNpq9rpjhfaiMQmx',
+  publicKeyBase58: 'DggG1kT5JEFwTC6RJTsT6VQPgCz1qszCkX5Lv4nun98x'
+};
+
+export const mockKeyPair2020 = {
   type: 'Ed25519VerificationKey2020',
   controller,
   id: controller + '#z6MkjLrk3gKS2nnkeWcmcxiZPGskmesDpuwRBorgHxUXfxnG',
@@ -20,13 +28,31 @@ export const mockKeyPair = {
     'DHnxuhfrTaMjnR8BTp9NeUvJiwJoSUM6xHAZ'
 };
 
-export const controllerDoc = {
+export const mockKeyPair2018 = {
+  type: 'Ed25519VerificationKey2018',
+  controller,
+  id: controller + '#z6MkumafR1duPR5FZgbVu8nzX3VyhULoXNpq9rpjhfaiMQmx',
+  publicKeyBase58: 'DggG1kT5JEFwTC6RJTsT6VQPgCz1qszCkX5Lv4nun98x',
+  privateKeyBase58: 'sSicNq6YBSzafzYDAcuduRmdHtnrZRJ7CbvjzdQhC45e' +
+    'wwvQeuqbM2dNwS9RCf6buUJGu6N3rBy6oLSpMwha8tc'
+};
+
+export const controllerDoc2020 = {
   '@context': [
     'https://www.w3.org/ns/did/v1',
     'https://w3id.org/security/suites/ed25519-2020/v1'
   ],
   id: 'https://example.edu/issuers/565049',
-  assertionMethod: [mockPublicKey]
+  assertionMethod: [mockPublicKey2020]
+};
+
+export const controllerDoc2018 = {
+  '@context': [
+    'https://www.w3.org/ns/did/v1',
+    'https://w3id.org/security/suites/ed25519-2018/v1'
+  ],
+  id: 'https://example.edu/issuers/565049',
+  assertionMethod: [mockPublicKey2018]
 };
 
 export const credential = {
