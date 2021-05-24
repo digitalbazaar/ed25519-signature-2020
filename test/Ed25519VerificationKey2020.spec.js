@@ -8,8 +8,17 @@ const {purposes: {AssertionProofPurpose}} = jsigs;
 
 import {Ed25519VerificationKey2020} from
   '@digitalbazaar/ed25519-verification-key-2020';
+
+import {Ed25519VerificationKey2018} from
+  '@digitalbazaar/ed25519-verification-key-2018';
 import {Ed25519Signature2020, suiteContext} from '..';
-import {credential, mockKeyPair} from './mock-data.js';
+import {
+  credential,
+  mockKeyPair2020,
+  mockKeyPair2018,
+  mockPublicKey2018,
+  controllerDoc2018
+} from './mock-data.js';
 import {loader} from './documentLoader';
 
 const documentLoader = loader.build();
@@ -39,7 +48,9 @@ describe('Ed25519Signature2020', () => {
   describe('sign() and verify()', () => {
     it('should sign a document with a key pair', async () => {
       const unsignedCredential = {...credential};
-      const keyPair = await Ed25519VerificationKey2020.from({...mockKeyPair});
+      const keyPair = await Ed25519VerificationKey2020.from({
+        ...mockKeyPair2020
+      });
       const suite = new Ed25519Signature2020({key: keyPair});
       suite.date = '2010-01-01T19:23:24Z';
 
@@ -56,7 +67,9 @@ describe('Ed25519Signature2020', () => {
 
     it('signs a document given a signer object', async () => {
       const unsignedCredential = {...credential};
-      const keyPair = await Ed25519VerificationKey2020.from({...mockKeyPair});
+      const keyPair = await Ed25519VerificationKey2020.from({
+        ...mockKeyPair2020
+      });
 
       // Note: Typically a signer object comes from a KMS; mocking it here
       const signer = keyPair.signer();
@@ -107,7 +120,9 @@ describe('Ed25519Signature2020', () => {
         // do not include the suite-specific context
       ];
 
-      const keyPair = await Ed25519VerificationKey2020.from({...mockKeyPair});
+      const keyPair = await Ed25519VerificationKey2020.from({
+        ...mockKeyPair2020
+      });
       const suite = new Ed25519Signature2020({key: keyPair});
 
       const signedCredential = await jsigs.sign(unsignedCredential, {
@@ -134,7 +149,9 @@ describe('Ed25519Signature2020', () => {
         // do not include the suite-specific context
       ];
 
-      const keyPair = await Ed25519VerificationKey2020.from({...mockKeyPair});
+      const keyPair = await Ed25519VerificationKey2020.from({
+        ...mockKeyPair2020
+      });
       const suite = new Ed25519Signature2020({key: keyPair});
 
       let err;
@@ -154,12 +171,14 @@ describe('Ed25519Signature2020', () => {
     });
   });
 
-  describe('verify()', () => {
+  describe('verify() 2020 key type', () => {
     let signedCredential;
 
     before(async () => {
       const unsignedCredential = {...credential};
-      const keyPair = await Ed25519VerificationKey2020.from({...mockKeyPair});
+      const keyPair = await Ed25519VerificationKey2020.from({
+        ...mockKeyPair2020
+      });
       const suite = new Ed25519Signature2020({key: keyPair});
       suite.date = '2010-01-01T19:23:24Z';
 
@@ -172,13 +191,11 @@ describe('Ed25519Signature2020', () => {
 
     it('should verify a document', async () => {
       const suite = new Ed25519Signature2020();
-
       const result = await jsigs.verify(signedCredential, {
         suite,
         purpose: new AssertionProofPurpose(),
         documentLoader
       });
-
       expect(result.verified).to.be.true;
     });
 
@@ -272,5 +289,80 @@ describe('Ed25519Signature2020', () => {
           'Could not verify any proofs; no proofs matched the required ' +
             'suite and purpose.');
       });
+  });
+  describe('verify() 2018 key type', () => {
+    let signedCredential;
+
+    before(async () => {
+      const unsignedCredential = {...credential};
+      const keyPair = await Ed25519VerificationKey2018.from({
+        ...mockKeyPair2018
+      });
+      const suite = new Ed25519Signature2020({key: keyPair});
+      suite.date = '2010-01-01T19:23:24Z';
+
+      signedCredential = await jsigs.sign(unsignedCredential, {
+        suite,
+        purpose: new AssertionProofPurpose(),
+        documentLoader
+      });
+    });
+
+    it('should verify when verificationMethod contains 2018 key and context',
+      async () => {
+        loader.addStatic(mockKeyPair2018.controller, controllerDoc2018);
+        loader.addStatic(mockPublicKey2018.id, mockPublicKey2018);
+        const documentLoader = loader.build();
+        const suite = new Ed25519Signature2020();
+        const result = await jsigs.verify(signedCredential, {
+          suite,
+          purpose: new AssertionProofPurpose(),
+          documentLoader
+        });
+        expect(result.verified).to.be.true;
+      });
+    it('should throw error when verification method does not have' +
+      '2018 context', async () => {
+      const mockPublicKey2018WithoutContext = {...mockPublicKey2018};
+      // intentionally delete the context
+      delete mockPublicKey2018WithoutContext['@context'];
+      loader.addStatic(mockKeyPair2018.controller, controllerDoc2018);
+      loader.addStatic(mockPublicKey2018WithoutContext.id,
+        mockPublicKey2018WithoutContext);
+      const documentLoader = loader.build();
+      const suite = new Ed25519Signature2020();
+      const result = await jsigs.verify(signedCredential, {
+        suite,
+        purpose: new AssertionProofPurpose(),
+        documentLoader
+      });
+      expect(result.verified).to.be.false;
+      expect(result.results[0].error.name).equal('TypeError');
+      expect(result.results[0].error.message).equal(
+        'The verification method (key) must contain ' +
+        '\"https://w3id.org/security/suites/ed25519-2018/v1\".');
+    });
+    it('should throw error when verification method contains 2018 key' +
+      'but 2020 context', async () => {
+      const mockPublicKey2018With2020Context = {...mockPublicKey2018};
+      // intentionally modify the context to ed25519 2020 context
+      mockPublicKey2018With2020Context['@context'] =
+        'https://w3id.org/security/suites/ed25519-2020/v1';
+      loader.addStatic(mockKeyPair2018.controller, controllerDoc2018);
+      loader.addStatic(mockPublicKey2018With2020Context.id,
+        mockPublicKey2018With2020Context);
+      const documentLoader = loader.build();
+      const suite = new Ed25519Signature2020();
+      const result = await jsigs.verify(signedCredential, {
+        suite,
+        purpose: new AssertionProofPurpose(),
+        documentLoader
+      });
+      expect(result.verified).to.be.false;
+      expect(result.results[0].error.name).equal('TypeError');
+      expect(result.results[0].error.message).equal(
+        'The verification method (key) must contain ' +
+        '\"https://w3id.org/security/suites/ed25519-2018/v1\".');
+    });
   });
 });

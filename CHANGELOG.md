@@ -3,7 +3,9 @@
 ## 2.2.0 - 2021-05-TBD
 
 ### Changed
-- Replace `@transmute/jsonld-document-loader` with `jsonld-document-loader` in test.
+- Replace `@transmute/jsonld-document-loader` with `jsonld-document-loader`
+in test.
+- Enable verification of proofs of type Ed25519Signature2020 using 2018 keys.
 
 ## 2.1.0 - 2021-04-09
 
