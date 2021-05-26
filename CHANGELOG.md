@@ -1,11 +1,14 @@
 # @digitalbazaar/ed25519-signature-2020 Changelog
 
-## 2.2.0 - 2021-05-TBD
+## 2.2.0 - 2021-05-26
+
+### Added
+- It is now possible to verify `Ed25519Signature2020` proofs using using
+  2018 keys.
 
 ### Changed
 - Replace `@transmute/jsonld-document-loader` with
   `@digitalbazaar/security-document-loader` in test.
-- Enable verification of proofs of type Ed25519Signature2020 using 2018 keys.
 
 ## 2.1.0 - 2021-04-09
 
