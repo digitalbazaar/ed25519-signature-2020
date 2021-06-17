@@ -46,7 +46,6 @@ The following code snippet provides a complete example of digitally signing
 a verifiable credential using this library:
 
 ```javascript
-// create the unsigned credential
 import jsigs from 'jsonld-signatures';
 const {purposes: {AssertionProofPurpose}} = jsigs;
 import {Ed25519VerificationKey2020} from
@@ -54,6 +53,7 @@ import {Ed25519VerificationKey2020} from
 import {Ed25519Signature2020, suiteContext} from
   '@digitalbazaar/ed25519-signature-2020';
 
+// create the unsigned credential
 const unsignedCredential = {
   '@context': [
     'https://www.w3.org/2018/credentials/v1',
@@ -69,7 +69,8 @@ const unsignedCredential = {
   credentialSubject: {
     id: 'https://example.edu/students/alice',
     alumniOf: 'Example University'
-  }};
+  }
+};
 
 // create the keypair to use when signing
 const controller = 'https://example.edu/issuers/565049';
