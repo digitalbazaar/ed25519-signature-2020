@@ -42,20 +42,67 @@ npm install
 
 ## Usage
 
-Example signed VC:
+The following code snippet provides a complete example of digitally signing
+a verifiable credential using this library:
 
-```json
+```javascript
+// create the unsigned credential
+import jsigs from 'jsonld-signatures';
+const {purposes: {AssertionProofPurpose}} = jsigs;
+import {Ed25519VerificationKey2020} from
+  '@digitalbazaar/ed25519-verification-key-2020';
+import {Ed25519Signature2020, suiteContext} from
+  '@digitalbazaar/ed25519-signature-2020';
+
+const unsignedCredential = {
+  '@context': [
+    'https://www.w3.org/2018/credentials/v1',
+    {
+      AlumniCredential: 'https://schema.org#AlumniCredential',
+      alumniOf: 'https://schema.org#alumniOf'
+    }
+  ],
+  id: 'http://example.edu/credentials/1872',
+  type: [ 'VerifiableCredential', 'AlumniCredential' ],
+  issuer: 'https://example.edu/issuers/565049',
+  issuanceDate: '2010-01-01T19:23:24Z',
+  credentialSubject: {
+    id: 'https://example.edu/students/alice',
+    alumniOf: 'Example University'
+  }};
+
+// create the keypair to use when signing
+const controller = 'https://example.edu/issuers/565049';
+const keyPair = await Ed25519VerificationKey2020.from({
+  type: 'Ed25519VerificationKey2020',
+  controller,
+  id: controller + '#z6MknCCLeeHBUaHu4aHSVLDCYQW9gjVJ7a63FpMvtuVMy53T',
+  publicKeyMultibase: 'z6MknCCLeeHBUaHu4aHSVLDCYQW9gjVJ7a63FpMvtuVMy53T',
+  privateKeyMultibase: 'zrv2EET2WWZ8T1Jbg4fEH5cQxhbUS22XxdweypUbjWVzv1YD6VqYu' +
+    'W6LH7heQCNYQCuoKaDwvv2qCWz3uBzG2xesqmf'
+});
+
+const suite = new Ed25519Signature2020({key: keyPair});
+suite.date = '2010-01-01T19:23:24Z';
+
+signedCredential = await jsigs.sign(unsignedCredential, {
+  suite,
+  purpose: new AssertionProofPurpose(),
+  documentLoader
+});
+
+// results in the following signed VC
 {
   "@context": [
     "https://www.w3.org/2018/credentials/v1",
-    "https://www.w3.org/2018/credentials/examples/v1",
-    "https://w3id.org/security/ed25519-signature-2020/v1"
+    {
+      "AlumniCredential": "https://schema.org#AlumniCredential",
+      "alumniOf": "https://schema.org#alumniOf"
+    },
+    "https://w3id.org/security/suites/ed25519-2020/v1"
   ],
   "id": "http://example.edu/credentials/1872",
-  "type": [
-    "VerifiableCredential",
-    "AlumniCredential"
-  ],
+  "type": ["VerifiableCredential", "AlumniCredential"],
   "issuer": "https://example.edu/issuers/565049",
   "issuanceDate": "2010-01-01T19:23:24Z",
   "credentialSubject": {
@@ -65,9 +112,9 @@ Example signed VC:
   "proof": {
     "type": "Ed25519Signature2020",
     "created": "2010-01-01T19:23:24Z",
+    "verificationMethod": "https://example.edu/issuers/565049#z6MknCCLeeHBUaHu4aHSVLDCYQW9gjVJ7a63FpMvtuVMy53T",
     "proofPurpose": "assertionMethod",
-    "proofValue": "z3vG9cHevmrtMiTfb8e7qSPtKyZz1ziPbcxePqcYJ5Rtx5asWsHFq6rPfj8GaPxXkYqvb7qu2dFYg9amc1dpqQhsY",
-    "verificationMethod": "https://example.edu/issuers/565049#z6MkjLrk3gKS2nnkeWcmcxiZPGskmesDpuwRBorgHxUXfxnG"
+    "proofValue": "z3MvGcVxzRzzpKF1HA11EjvfPZsN8NAb7kXBRfeTm3CBg2gcJLQM5hZNmj6Ccd9Lk4C1YueiFZvkSx4FuHVYVouQk"
   }
 }
 ```
