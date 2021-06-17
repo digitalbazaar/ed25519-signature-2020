@@ -7,8 +7,8 @@ export const mockPublicKey2020 = {
   '@context': 'https://w3id.org/security/suites/ed25519-2020/v1',
   type: 'Ed25519VerificationKey2020',
   controller,
-  id: controller + '#z6MkjLrk3gKS2nnkeWcmcxiZPGskmesDpuwRBorgHxUXfxnG',
-  publicKeyMultibase: 'zEYJrMxWigf9boyeJMTRN4Ern8DJMoCXaLK77pzQmxVjf'
+  id: controller + '#z6MknCCLeeHBUaHu4aHSVLDCYQW9gjVJ7a63FpMvtuVMy53T',
+  publicKeyMultibase: 'z6MknCCLeeHBUaHu4aHSVLDCYQW9gjVJ7a63FpMvtuVMy53T'
 };
 
 export const mockPublicKey2018 = {
@@ -22,10 +22,10 @@ export const mockPublicKey2018 = {
 export const mockKeyPair2020 = {
   type: 'Ed25519VerificationKey2020',
   controller,
-  id: controller + '#z6MkjLrk3gKS2nnkeWcmcxiZPGskmesDpuwRBorgHxUXfxnG',
-  publicKeyMultibase: 'zEYJrMxWigf9boyeJMTRN4Ern8DJMoCXaLK77pzQmxVjf',
-  privateKeyMultibase: 'z4E7Q4neNHwv3pXUNzUjzc6TTYspqn9Aw6vakpRKpbVrCzwKWD4hQ' +
-    'DHnxuhfrTaMjnR8BTp9NeUvJiwJoSUM6xHAZ'
+  id: controller + '#z6MknCCLeeHBUaHu4aHSVLDCYQW9gjVJ7a63FpMvtuVMy53T',
+  publicKeyMultibase: 'z6MknCCLeeHBUaHu4aHSVLDCYQW9gjVJ7a63FpMvtuVMy53T',
+  privateKeyMultibase: 'zrv2EET2WWZ8T1Jbg4fEH5cQxhbUS22XxdweypUbjWVzv1YD6VqYu' +
+    'W6LH7heQCNYQCuoKaDwvv2qCWz3uBzG2xesqmf'
 };
 
 export const mockKeyPair2018 = {
