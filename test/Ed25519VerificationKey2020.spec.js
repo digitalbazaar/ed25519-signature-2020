@@ -61,8 +61,8 @@ describe('Ed25519Signature2020', () => {
       });
       expect(signedCredential).to.have.property('proof');
       expect(signedCredential.proof.proofValue).to
-        .equal('z4BGReZ26TUL7wPwsWKtAs2MZZknq9nzrAJ5uuPmfA14WXjn6w5cqg' +
-          '8Z5rWJjJZ2qG16iz4KcNKW9RJdN4Ea1PRuA');
+        .equal('z3MvGcVxzRzzpKF1HA11EjvfPZsN8NAb7kXBRfeTm3CBg2gcJLQM5hZNmj6Cc' +
+          'd9Lk4C1YueiFZvkSx4FuHVYVouQk');
     });
 
     it('signs a document given a signer object', async () => {
@@ -85,8 +85,8 @@ describe('Ed25519Signature2020', () => {
 
       expect(signedCredential).to.have.property('proof');
       expect(signedCredential.proof.proofValue).to
-        .equal('z4BGReZ26TUL7wPwsWKtAs2MZZknq9nzrAJ5uuPmfA14WXjn6w5cqg8Z5' +
-          'rWJjJZ2qG16iz4KcNKW9RJdN4Ea1PRuA');
+        .equal('z3MvGcVxzRzzpKF1HA11EjvfPZsN8NAb7kXBRfeTm3CBg2gcJLQM5hZNmj6Cc' +
+          'd9Lk4C1YueiFZvkSx4FuHVYVouQk');
     });
 
     it('should throw error if "signer" is not specified', async () => {
