@@ -1,5 +1,12 @@
 # @digitalbazaar/ed25519-signature-2020 Changelog
 
+## 3.0.0 - 2021-06-19
+
+### Fixed
+
+- **BREAKING**: Update to use new Ed25519VerificationKey2020 multicodec
+  encoded key formats.
+
 ## 2.2.0 - 2021-05-26
 
 ### Added
