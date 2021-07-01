@@ -284,10 +284,7 @@ describe('Ed25519Signature2020', () => {
         const {errors} = result.error;
 
         expect(result.verified).to.be.false;
-        expect(errors[0].name).to.equal('Error');
-        expect(errors[0].message).to.equal(
-          'Could not verify any proofs; no proofs matched the required ' +
-            'suite and purpose.');
+        expect(errors[0].name).to.equal('NotFoundError');
       });
   });
   describe('verify() 2018 key type', () => {

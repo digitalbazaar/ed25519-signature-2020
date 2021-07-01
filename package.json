@@ -19,7 +19,7 @@
     "ed25519-signature-2020-context": "^1.0.1",
     "ed25519-signature-2018-context": "^1.1.0",
     "esm": "^3.2.25",
-    "jsonld-signatures": "^9.0.1"
+    "jsonld-signatures": "^9.2.0"
   },
   "devDependencies": {
     "@digitalbazaar/ed25519-verification-key-2018": "^3.1.1",
