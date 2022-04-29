@@ -1,5 +1,5 @@
 /*!
- * Copyright (c) 2021 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2021-2022 Digital Bazaar, Inc. All rights reserved.
  */
 module.exports = {
   globals: {
@@ -9,8 +9,5 @@ module.exports = {
   env: {
     node: true,
     mocha: true
-  },
-  extends: [
-    'digitalbazaar'
-  ]
+  }
 };
