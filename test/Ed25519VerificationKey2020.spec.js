@@ -1,17 +1,19 @@
 /*!
- * Copyright (c) 2021 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2021-2022 Digital Bazaar, Inc. All rights reserved.
  */
 import {expect} from 'chai';
 
 import jsigs from 'jsonld-signatures';
 const {purposes: {AssertionProofPurpose}} = jsigs;
 
-import {Ed25519VerificationKey2020} from
-  '@digitalbazaar/ed25519-verification-key-2020';
+import {
+  Ed25519VerificationKey2020
+} from '@digitalbazaar/ed25519-verification-key-2020';
 
-import {Ed25519VerificationKey2018} from
-  '@digitalbazaar/ed25519-verification-key-2018';
-import {Ed25519Signature2020, suiteContext} from '..';
+import {
+  Ed25519VerificationKey2018
+} from '@digitalbazaar/ed25519-verification-key-2018';
+import {Ed25519Signature2020, suiteContext} from '../lib/index.js';
 import {
   credential,
   mockKeyPair2020,
@@ -19,7 +21,7 @@ import {
   mockPublicKey2018,
   controllerDoc2018
 } from './mock-data.js';
-import {loader} from './documentLoader';
+import {loader} from './documentLoader.js';
 
 const documentLoader = loader.build();
 
