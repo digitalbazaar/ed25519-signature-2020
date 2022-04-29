@@ -20,7 +20,6 @@ jobs:
       run: npm run lint
   test-node:
     runs-on: ubuntu-latest
-    needs: [lint]
     timeout-minutes: 10
     strategy:
       matrix:
@@ -36,7 +35,6 @@ jobs:
       run: npm run test-node
   test-karma:
     runs-on: ubuntu-latest
-    needs: [lint]
     timeout-minutes: 10
     strategy:
       matrix:
