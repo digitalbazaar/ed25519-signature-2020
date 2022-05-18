@@ -1,5 +1,9 @@
 # @digitalbazaar/ed25519-signature-2020 Changelog
 
+## 3.0.1 - 2022-05-18
+- fix export of suiteContext which yielded an undefined value
+in jest consumers
+
 ## 3.0.0 - 2021-06-19
 
 ### Fixed
