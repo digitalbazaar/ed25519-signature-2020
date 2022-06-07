@@ -30,7 +30,7 @@ TBD
 
 ## Install
 
-- Node.js 14+ is required.
+- Browsers and Node.js 14+ supported.
 
 To install locally (for development):
 
