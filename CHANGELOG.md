@@ -1,6 +1,6 @@
 # @digitalbazaar/ed25519-signature-2020 Changelog
 
-## 4.0.1 - 2022-##-##
+## 4.0.1 - 2022-06-06
 
 ### Changed
 - Update to jsonld-signatures@10.
