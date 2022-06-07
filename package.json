@@ -16,7 +16,7 @@
     "util": false
   },
   "files": [
-    "lib/*.js"
+    "lib/**/*.js"
   ],
   "dependencies": {
     "@digitalbazaar/ed25519-verification-key-2020": "^4.0.0",
