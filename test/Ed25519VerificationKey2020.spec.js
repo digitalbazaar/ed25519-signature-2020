@@ -341,8 +341,8 @@ describe('Ed25519Signature2020', () => {
         'The verification method (key) must contain ' +
         '\"https://w3id.org/security/suites/ed25519-2018/v1\" context.');
     });
-    it('should throw error when verification method contains 2018 key' +
-      'but 2020 context', async () => {
+    it('should throw error when verification method contains 2018 key ' +
+      'with (not-matching) 2020 context', async () => {
       const mockPublicKey2018With2020Context = {...mockPublicKey2018};
       // intentionally modify the context to ed25519 2020 context
       mockPublicKey2018With2020Context['@context'] =
