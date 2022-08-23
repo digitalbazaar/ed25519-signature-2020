@@ -66,7 +66,7 @@ describe('Ed25519Signature2020', () => {
         .equal('z3MvGcVxzRzzpKF1HA11EjvfPZsN8NAb7kXBRfeTm3CBg2gcJLQM5hZNmj6Cc' +
           'd9Lk4C1YueiFZvkSx4FuHVYVouQk');
     });
-    
+
     it('should fail to sign with undefined term', async () => {
       const unsignedCredential = JSON.parse(JSON.stringify(credential));
       unsignedCredential.undefinedTerm = 'foo';
@@ -75,7 +75,7 @@ describe('Ed25519Signature2020', () => {
       });
       const suite = new Ed25519Signature2020({key: keyPair});
       suite.date = '2010-01-01T19:23:24Z';
-      
+
       let error;
       try {
         await jsigs.sign(unsignedCredential, {
@@ -99,7 +99,7 @@ describe('Ed25519Signature2020', () => {
       });
       const suite = new Ed25519Signature2020({key: keyPair});
       suite.date = '2010-01-01T19:23:24Z';
-      
+
       let error;
       try {
         await jsigs.sign(unsignedCredential, {
