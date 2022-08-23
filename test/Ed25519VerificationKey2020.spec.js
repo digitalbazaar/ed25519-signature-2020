@@ -11,16 +11,16 @@ import {
 } from '@digitalbazaar/ed25519-verification-key-2020';
 
 import {
-  Ed25519VerificationKey2018
-} from '@digitalbazaar/ed25519-verification-key-2018';
+  controllerDoc2018,
+  credential,
+  mockKeyPair2018,
+  mockKeyPair2020,
+  mockPublicKey2018
+} from './mock-data.js';
 import {Ed25519Signature2020, suiteContext} from '../lib/index.js';
 import {
-  credential,
-  mockKeyPair2020,
-  mockKeyPair2018,
-  mockPublicKey2018,
-  controllerDoc2018
-} from './mock-data.js';
+  Ed25519VerificationKey2018
+} from '@digitalbazaar/ed25519-verification-key-2018';
 import {loader} from './documentLoader.js';
 
 const documentLoader = loader.build();

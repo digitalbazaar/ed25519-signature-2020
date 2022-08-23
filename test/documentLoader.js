@@ -1,9 +1,9 @@
-/*
- * Copyright (c) 2021 Digital Bazaar, Inc. All rights reserved.
+/*!
+ * Copyright (c) 2021-2022 Digital Bazaar, Inc. All rights reserved.
  */
 import {
-  mockKeyPair2020,
   controllerDoc2020,
+  mockKeyPair2020,
   mockPublicKey2020,
 } from './mock-data.js';
 import ed25519Context2018 from 'ed25519-signature-2018-context';
