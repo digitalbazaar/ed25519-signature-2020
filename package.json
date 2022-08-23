@@ -1,6 +1,6 @@
 {
   "name": "@digitalbazaar/ed25519-signature-2020",
-  "version": "4.0.2-0",
+  "version": "5.0.0",
   "description": "Ed25519Signature2020 Linked Data Proof suite for use with jsonld-signatures.",
   "homepage": "https://github.com/digitalbazaar/ed25519-signature-2020",
   "repository": {
