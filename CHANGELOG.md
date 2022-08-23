@@ -1,5 +1,11 @@
 # @digitalbazaar/ed25519-signature-2020 Changelog
 
+## 5.0.0 - 2022-08-xx
+
+### Changed
+- **BREAKING**: Use `jsonld-signatures@11` to get better safe mode
+  protections when canonizing.
+
 ## 4.0.1 - 2022-06-06
 
 ### Changed
