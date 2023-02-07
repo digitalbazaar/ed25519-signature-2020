@@ -1,6 +1,6 @@
 # @digitalbazaar/ed25519-signature-2020 Changelog
 
-## 5.1.0 - 2023-02-dd
+## 5.1.0 - 2023-02-07
 
 ### Added
 - Allow custom `canonizeOptions` to be passed in the construction of
