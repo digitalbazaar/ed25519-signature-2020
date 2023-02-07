@@ -1,5 +1,12 @@
 # @digitalbazaar/ed25519-signature-2020 Changelog
 
+## 5.1.0 - 2023-02-dd
+
+### Added
+- Allow custom `canonizeOptions` to be passed in the construction of
+  a suite as a stop-gap until hard requirements for canonize options
+  are either set or advised to be certain values by a W3C working group.
+
 ## 5.0.0 - 2022-08-23
 
 ### Changed
