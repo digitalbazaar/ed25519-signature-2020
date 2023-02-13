@@ -1,6 +1,6 @@
 # @digitalbazaar/ed25519-signature-2020 Changelog
 
-## 5.2.0 - 2023-TBD
+## 5.2.0 - 2023-02-13
 
 ### Removed
 - Remove unused `expansionMap` from `matchProof()` as it was removed
