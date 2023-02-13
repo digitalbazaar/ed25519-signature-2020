@@ -1,10 +1,10 @@
 # @digitalbazaar/ed25519-signature-2020 Changelog
 
-## 6.0.0 - 2023-TBD
+## 5.2.0 - 2023-TBD
 
-### Changed
-- **BREAKING**: Remove support for `expansionMap` from `matchProof()`.
-  (Removed in `jsonld-signatures@11`.)
+### Removed
+- Remove unused `expansionMap` from `matchProof()` as it was removed
+  from `jsonld-signatures@11` which is required since version `5.0`.
 
 ## 5.1.0 - 2023-02-07
 
