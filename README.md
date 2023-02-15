@@ -1,6 +1,6 @@
 # Ed25519Signature2020 suite _(@digitalbazaar/ed25519-signature-2020)_
 
-[![Build status](https://img.shields.io/github/workflow/status/digitalbazaar/ed25519-signature-2020/Node.js%20CI)](https://github.com/digitalbazaar/ed25519-signature-2020/actions?query=workflow%3A%22Node.js+CI%22)
+[![Build status](https://img.shields.io/github/actions/workflow/status/digitalbazaar/ed25519-signature-2020/main.yml?branch=main)](https://github.com/digitalbazaar/ed25519-signature-2020/actions?query=workflow%3A%22Node.js+CI%22)
 [![Coverage status](https://img.shields.io/codecov/c/github/digitalbazaar/ed25519-signature-2020)](https://codecov.io/gh/digitalbazaar/ed25519-signature-2020)
 [![NPM Version](https://img.shields.io/npm/v/@digitalbazaar/ed25519-signature-2020.svg)](https://npm.im/digitalbazaar/ed25519-signature-2020)
 
