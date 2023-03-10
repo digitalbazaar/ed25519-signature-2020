@@ -22,7 +22,7 @@ For use with https://github.com/digitalbazaar/jsonld-signatures v9.0 and above.
 
 See also related specs:
 
-* [Ed25519Signature2020 Crypto Suite](https://w3c-ccg.github.io/lds-ed25519-2020/)
+* [Ed25519Signature2020 Crypto Suite](https://w3c.github.io/vc-di-eddsa/)
 
 ## Security
 
