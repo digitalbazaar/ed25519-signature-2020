@@ -1,5 +1,15 @@
 # @digitalbazaar/ed25519-signature-2020 Changelog
 
+## 5.3.0 - 2024-mm-dd
+
+### Added
+- Add support for `Multikey` verification methods.
+
+### Changed
+- Loosen restrictions on verification methods that do not have
+  contexts, allowing processing of well-known types in those cases.
+- Allow `publiKeyJwk` to be used to express key material.
+
 ## 5.2.0 - 2023-02-13
 
 ### Removed

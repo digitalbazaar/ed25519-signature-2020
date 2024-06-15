@@ -1,5 +1,5 @@
 /*!
- * Copyright (c) 2021-2022 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2021-2024 Digital Bazaar, Inc. All rights reserved.
  */
 import {expect} from 'chai';
 
@@ -416,27 +416,6 @@ describe('Ed25519Signature2020', () => {
         });
         expect(result.verified).to.be.true;
       });
-    it('should throw error when verification method does not have' +
-      '2018 context', async () => {
-      const mockPublicKey2018WithoutContext = {...mockPublicKey2018};
-      // intentionally delete the context
-      delete mockPublicKey2018WithoutContext['@context'];
-      loader.addStatic(mockKeyPair2018.controller, controllerDoc2018);
-      loader.addStatic(mockPublicKey2018WithoutContext.id,
-        mockPublicKey2018WithoutContext);
-      const documentLoader = loader.build();
-      const suite = new Ed25519Signature2020();
-      const result = await jsigs.verify(signedCredential, {
-        suite,
-        purpose: new AssertionProofPurpose(),
-        documentLoader
-      });
-      expect(result.verified).to.be.false;
-      expect(result.results[0].error.name).equal('TypeError');
-      expect(result.results[0].error.message).equal(
-        'The verification method (key) must contain ' +
-        '\"https://w3id.org/security/suites/ed25519-2018/v1\" context.');
-    });
     it('should throw error when verification method contains 2018 key ' +
       'with (not-matching) 2020 context', async () => {
       const mockPublicKey2018With2020Context = {...mockPublicKey2018};
@@ -454,10 +433,9 @@ describe('Ed25519Signature2020', () => {
         documentLoader
       });
       expect(result.verified).to.be.false;
-      expect(result.results[0].error.name).equal('TypeError');
       expect(result.results[0].error.message).equal(
-        'The verification method (key) must contain ' +
-        '\"https://w3id.org/security/suites/ed25519-2018/v1\" context.');
+        'Context not supported ' +
+        '"https://w3id.org/security/suites/ed25519-2020/v1".');
     });
   });
 });
