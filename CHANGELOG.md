@@ -1,6 +1,6 @@
 # @digitalbazaar/ed25519-signature-2020 Changelog
 
-## 5.3.0 - 2024-mm-dd
+## 5.3.0 - 2024-06-15
 
 ### Added
 - Add support for `Multikey` verification methods.
