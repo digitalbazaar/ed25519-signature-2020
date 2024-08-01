@@ -1,5 +1,10 @@
 # @digitalbazaar/ed25519-signature-2020 Changelog
 
+## 5.4.0 - 2024-08-dd
+
+### Changed
+- Use `jsonld-signature@11.3` to get `RDFC-1.0` implementation.
+
 ## 5.3.0 - 2024-06-15
 
 ### Added
