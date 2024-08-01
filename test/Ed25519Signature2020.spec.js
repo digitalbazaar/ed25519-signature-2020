@@ -80,8 +80,7 @@ describe('Ed25519Signature2020', () => {
         ...mockKeyPair2020
       });
       const suite = new Ed25519Signature2020({
-        key: keyPair,
-        canonizeOptions: {maxDeepIterations: 1}
+        key: keyPair
       });
       suite.date = '2010-01-01T19:23:24Z';
       unsignedCredential.alumniOf = poisonData;
@@ -282,9 +281,7 @@ describe('Ed25519Signature2020', () => {
 
     it('should fail to verify a document with a poison graph', async () => {
       const poisonCredential = {...signedCredential};
-      const suite = new Ed25519Signature2020({
-        canonizeOptions: {maxDeepIterations: 1}
-      });
+      const suite = new Ed25519Signature2020();
       poisonCredential.alumniOf = poisonData;
 
       const result = await jsigs.verify(poisonCredential, {
